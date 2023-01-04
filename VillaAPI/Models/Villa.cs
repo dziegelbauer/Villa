@@ -14,7 +14,7 @@ public class Villa
     public int Sqft { get; set; }
     public int Occupancy { get; set; }
     public string ImageUrl { get; set; } = String.Empty;
-    public string Amenity { get; set; }= String.Empty;
+    public string Amenity { get; set; } = String.Empty;
     public DateTime CreatedDate { get; set; } = DateTime.Now;
     public DateTime UpdatedDate { get; set; } = DateTime.Now;
 }

@@ -18,5 +18,5 @@ public class VillaUpdateDTO
     public int Sqft { get; set; }
     [Required]
     public string ImageUrl { get; set; } = String.Empty;
-    public string Amenity { get; set; }= String.Empty;
+    public string Amenity { get; set; } = String.Empty;
 }
