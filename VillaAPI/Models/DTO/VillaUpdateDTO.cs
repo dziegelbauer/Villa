@@ -1,20 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace VillaAPI.Models;
+namespace VillaAPI.Models.DTO;
 
-public class Villa
+public class VillaUpdateDTO
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Required]
     public int Id { get; set; }
+    [Required]
+    [MaxLength(30)]
     public string Name { get; set; } = String.Empty;
     public string Details { get; set; } = String.Empty;
+    [Required]
     public double Rate { get; set; }
-    public int Sqft { get; set; }
+    [Required]
     public int Occupancy { get; set; }
+    [Required]
+    public int Sqft { get; set; }
+    [Required]
     public string ImageUrl { get; set; } = String.Empty;
     public string Amenity { get; set; }= String.Empty;
-    public DateTime CreatedDate { get; set; } = DateTime.Now;
-    public DateTime UpdatedDate { get; set; } = DateTime.Now;
 }
