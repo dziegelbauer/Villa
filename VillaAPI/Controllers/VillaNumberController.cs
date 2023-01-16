@@ -32,7 +32,7 @@ public class VillaNumberController : ControllerBase
     {
         try
         {
-            IEnumerable<VillaNumber> villaNumbers = await _villaNumberDb.GetAllAsync();
+            IEnumerable<VillaNumber> villaNumbers = await _villaNumberDb.GetAllAsync(includeProperties: "Villa");
             return Ok(new APIResponse()
             {
                 StatusCode = HttpStatusCode.OK,
@@ -72,7 +72,7 @@ public class VillaNumberController : ControllerBase
                 });
             }
 
-            var villaNumber = await _villaNumberDb.GetAsync(u => u.VillaNo == number);
+            var villaNumber = await _villaNumberDb.GetAsync(u => u.VillaNo == number, includeProperties: "Villa");
 
             if (villaNumber is null)
             {
@@ -126,7 +126,7 @@ public class VillaNumberController : ControllerBase
 
             if (await _villaNumberDb.GetAsync(u => u.VillaNo == villaNumberDTO.VillaNo) is not null)
             {
-                ModelState.AddModelError("CustomError", "Villa number already exists");
+                ModelState.AddModelError("ErrorMessages", "Villa number already exists");
                 return BadRequest(new APIResponse()
                 {
                     StatusCode = HttpStatusCode.BadRequest,
@@ -138,7 +138,7 @@ public class VillaNumberController : ControllerBase
 
             if (await _villaDb.GetAsync(u => u.Id == villaNumberDTO.VillaId) is null)
             {
-                ModelState.AddModelError("CustomError", $"Villa:{villaNumberDTO.VillaId} does not exist");
+                ModelState.AddModelError("ErrorMessages", $"Villa:{villaNumberDTO.VillaId} does not exist");
                 return BadRequest(new APIResponse()
                 {
                     StatusCode = HttpStatusCode.BadRequest,

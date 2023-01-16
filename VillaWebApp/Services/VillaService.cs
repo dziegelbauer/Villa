@@ -8,6 +8,7 @@ namespace VillaWebApp.Services;
 public class VillaService : BaseService, IVillaService
 {
     private readonly string _apiUrl;
+    private readonly string _apiPath = "/api/VillaAPI";
 
     public VillaService(IHttpClientFactory httpClientFactory, IConfiguration configuration) 
         : base(httpClientFactory)
@@ -20,7 +21,7 @@ public class VillaService : BaseService, IVillaService
         return await SendAsync<T>(new APIRequest()
         {
             ApiType = StaticDetails.ApiType.GET,
-            Url = $"{_apiUrl}/api/VillaAPI/{id}",
+            Url = $"{_apiUrl}{_apiPath}/{id}",
             Data = null,
         });
     }
@@ -30,7 +31,7 @@ public class VillaService : BaseService, IVillaService
         return await SendAsync<T>(new APIRequest()
         {
             ApiType = StaticDetails.ApiType.GET,
-            Url = $"{_apiUrl}/api/VillaAPI",
+            Url = $"{_apiUrl}{_apiPath}",
             Data = null,
         });
     }
@@ -40,7 +41,7 @@ public class VillaService : BaseService, IVillaService
         return await SendAsync<T>(new APIRequest()
         {
             ApiType = StaticDetails.ApiType.POST,
-            Url = $"{_apiUrl}/api/VillaAPI",
+            Url = $"{_apiUrl}{_apiPath}",
             Data = dto
         });
     }
@@ -50,7 +51,7 @@ public class VillaService : BaseService, IVillaService
         return await SendAsync<T>(new APIRequest()
         {
             ApiType = StaticDetails.ApiType.PUT,
-            Url = $"{_apiUrl}/api/VillaAPI/{dto.Id}",
+            Url = $"{_apiUrl}{_apiPath}/{dto.Id}",
             Data = dto
         });
     }
@@ -60,7 +61,7 @@ public class VillaService : BaseService, IVillaService
         return await SendAsync<T>(new APIRequest()
         {
             ApiType = StaticDetails.ApiType.DELETE,
-            Url = $"{_apiUrl}/api/VillaAPI/{id}",
+            Url = $"{_apiUrl}{_apiPath}/{id}",
             Data = null,
         });
     }

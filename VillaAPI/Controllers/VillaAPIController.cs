@@ -121,7 +121,7 @@ public class VillaApiController : ControllerBase
                 });
             }
 
-            if (await _villaDb.GetAsync(u => String.Equals(u.Name, villaDTO.Name, StringComparison.CurrentCultureIgnoreCase)) is not null)
+            if (await _villaDb.GetAsync(u => String.Equals(u.Name, villaDTO.Name)) is not null)
             {
                 ModelState.AddModelError("CustomError", "Villa already exists");
                 return BadRequest(new APIResponse()

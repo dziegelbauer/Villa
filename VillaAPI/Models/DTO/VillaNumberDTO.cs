@@ -9,4 +9,5 @@ public class VillaNumberDTO
     [Required] 
     public int VillaId { get; set; }
     public string SpecialDetails { get; set; } = String.Empty;
+    public VillaDTO? Villa { get; set; } = null;
 }
