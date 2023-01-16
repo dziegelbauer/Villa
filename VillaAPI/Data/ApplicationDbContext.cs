@@ -80,4 +80,5 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Villa> Villas { get; set; } = null!;
     public DbSet<VillaNumber> VillaNumbers { get; set; } = null!;
+    public DbSet<LocalUser> LocalUsers { get; set; }
 }
