@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Net.Http.Headers;
+using System.Text;
 using Newtonsoft.Json;
 using Villa_Utility;
 using VillaWebApp.Models;
@@ -40,6 +41,11 @@ public class BaseService : IBaseService
                 StaticDetails.ApiType.DELETE => HttpMethod.Delete,
                 _ => throw new ArgumentOutOfRangeException()
             };
+
+            if (!string.IsNullOrEmpty(apiRequest.Token))
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequest.Token);
+            }
 
             HttpResponseMessage? httpResponse = await client.SendAsync(message);
 
