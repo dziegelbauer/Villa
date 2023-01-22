@@ -8,7 +8,7 @@ namespace VillaWebApp.Services;
 public class AuthService : BaseService, IAuthService
 {
     private readonly string _apiUrl;
-    private readonly string _apiPath = "/api/UsersAuth";
+    private readonly string _apiPath = "/api/v1/UsersAuth";
 
     public AuthService(IHttpClientFactory clientFactory, IConfiguration configuration) : base(clientFactory)
     {

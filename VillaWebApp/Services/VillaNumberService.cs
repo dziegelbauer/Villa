@@ -8,7 +8,7 @@ namespace VillaWebApp.Services;
 public class VillaNumberService : BaseService, IVillaNumberService
 {
     private readonly string _apiUrl;
-    private readonly string _apiPath = "/api/VillaNumberAPI";
+    private readonly string _apiPath = "/api/v1/VillaNumberAPI";
 
     public VillaNumberService(IHttpClientFactory httpClientFactory, IConfiguration configuration) 
         : base(httpClientFactory)
